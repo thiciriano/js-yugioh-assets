@@ -18,9 +18,17 @@
         <h1>Yu-Gi-Oh Jo-ken-po Edition</h1>
     </header>
 
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content framed">
+            <h2>Carregando...</h2>
+            <p>Aguarde enquanto os assets do jogo são carregados.</p>
+        </div>
+    </div>
+
     <main class="container" role="main">
         <audio id="bgm" loop aria-label="Música de fundo do jogo">
-            <source src="./src/assets/audios/egyptian_duel.mp3" type="audio/mp3"/>
+            <source src="./src/assets/audios/egyptian_duel.mp3" type="audio/mp3">
+            <source src="./src/assets/audios/egyptian_duel.ogg" type="audio/ogg">
         </audio>
         <div class="bg-video">
             <video class="video" autoplay loop muted aria-hidden="true">
@@ -41,12 +49,12 @@
                 <p id="card-name">Selecione</p>
                 <p id="card-type">uma carta</p>
             </section>
+            <button id="audio-toggle" class="rpgui-button" aria-label="Ativar/desativar áudio">🔊</button>
         </aside>
 
         <section class="container__right" aria-label="Área de jogo">
             <article class="card-box__container">
-                <section class="card-box framed" id="computer-cards" aria-label="Cartas do computador">
-                </section>
+                <section class="card-box framed" id="computer-cards" aria-label="Cartas do computador"></section>
                 <section class="card-versus__container" aria-labelledby="versus-heading">
                     <h2 id="versus-heading" class="visually-hidden">Confronto de cartas</h2>
                     <div class="versus-top">
@@ -62,8 +70,7 @@
                         <button id="next-duel" class="rpgui-button" onclick="resetDuel()" aria-label="Iniciar próximo duelo">GANHOU</button>
                     </div>
                 </section>
-                <section class="card-box framed" id="player-cards" aria-label="Cartas do jogador">
-                </section>
+                <section class="card-box framed" id="player-cards" aria-label="Cartas do jogador"></section>
             </article>
         </section>
     </main>
