@@ -1,0 +1,287 @@
+/* Variáveis CSS para consistência e manutenção */
+:root {
+    --color-background: #ffffff;
+    --color-border: #000000;
+    --color-overlay-start: rgba(0, 0, 0, 1);
+    --color-overlay-middle: rgba(0, 0, 0, 0.8);
+    --color-overlay-end: rgba(0, 0, 0, 0.4);
+    --spacing-unit: 1rem;
+    --border-radius: 5px;
+    --transition-speed: 0.2s;
+}
+
+/* Reset básico para consistência */
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    cursor: url(../assets/cursor/yugicursor.png), default;
+}
+
+/* Estilos para elementos interativos */
+button,
+a,
+img:hover,
+button:hover,
+button:focus,
+a:focus {
+    cursor: url(../assets/cursor/yamiyugicursorGLOW.png), auto;
+    outline: none;
+}
+
+/* Vídeo de fundo */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-video .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-video::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-overlay-start) 0%, var(--color-overlay-middle) 50%, var(--color-overlay-end) 100%);
+}
+
+/* Layout principal */
+.container {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    gap: var(--spacing-unit);
+    padding: var(--spacing-unit);
+    box-sizing: border-box;
+}
+
+/* Seção à esquerda (placar e detalhes) */
+.container__left {
+    flex: 1;
+    min-width: 15rem;
+    max-width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-unit);
+}
+
+/* Placar */
+.score_box {
+    background-color: var(--color-background);
+    padding: calc(var(--spacing-unit) * 2);
+    border: 3px solid var(--color-border);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+/* Detalhes da carta */
+.card_details {
+    background-color: var(--color-background);
+    padding: var(--spacing-unit);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: calc(var(--spacing-unit) / 2);
+    border: 3px solid var(--color-border);
+    border-radius: var(--border-radius);
+    text-align: center;
+}
+
+#card-name {
+    font-size: 0.9rem;
+}
+
+#card-type {
+    font-size: 1.1rem;
+}
+
+/* Seção à direita (jogo) */
+.container__right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contêiner de cartas */
+.card-box__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing-unit);
+    width: 100%;
+    min-height: 100%;
+}
+
+/* Área de confronto */
+.card-versus__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-unit);
+    padding: var(--spacing-unit);
+}
+
+.versus-top {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing-unit) * 2);
+}
+
+.versus-bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--spacing-unit);
+}
+
+#next-duel {
+    display: none;
+    padding: var(--spacing-unit);
+    font-size: 1rem;
+}
+
+/* Caixas de cartas */
+.card-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit);
+    justify-content: center;
+    align-items: center;
+    padding: calc(var(--spacing-unit) / 2);
+}
+
+/* Cartas no campo */
+.card-infield {
+    width: 8rem;
+    height: 11.2rem;
+    border: 1px solid var(--color-background);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.card-infield img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Efeito de hover nas cartas */
+.card {
+    transition: transform var(--transition-speed) ease;
+}
+
+.card:hover,
+.card:focus {
+    transform: scale(1.2);
+}
+
+/* Media Queries para Responsividade */
+
+/* Mobile (≤600px) */
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        padding: calc(var(--spacing-unit) / 2);
+    }
+
+    .container__left {
+        max-width: 100%;
+        min-width: unset;
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: calc(var(--spacing-unit) / 2);
+    }
+
+    .container__right {
+        max-width: 100%;
+        flex: 1;
+    }
+
+    .card-box {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: calc(var(--spacing-unit) / 2);
+    }
+
+    .card-infield {
+        width: 6rem;
+        height: 8.4rem;
+    }
+
+    .card-box__container {
+        gap: calc(var(--spacing-unit) / 2);
+    }
+
+    .versus-top {
+        gap: var(--spacing-unit);
+    }
+
+    .menu_avatar {
+        position: static;
+        margin: var(--spacing-unit) 0;
+    }
+
+    .card_details {
+        position: static;
+    }
+
+    .score_box {
+        position: static;
+    }
+}
+
+/* Tablet (601px–1024px) */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    .container__left {
+        max-width: 20%;
+        min-width: 12rem;
+    }
+
+    .container__right {
+        max-width: 75%;
+    }
+
+    .card-infield {
+        width: 7rem;
+        height: 9.8rem;
+    }
+
+    .card-box {
+        gap: calc(var(--spacing-unit) / 1.5);
+    }
+}
+
+/* Desktop e TVs (>1024px) */
+@media screen and (min-width: 1025px) {
+    .container__left {
+        max-width: 25%;
+    }
+
+    .container__right {
+        max-width: 65%;
+    }
+
+    .card-infield {
+        width: 8rem;
+        height: 11.2rem;
+    }
+}
