@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./src/assets/favicon/Favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./src/styles/reset.css">
+    <link rel="stylesheet" href="./src/styles/buttons.css">
+    <link rel="stylesheet" href="./src/styles/containers_and_frames.css">
+    <link rel="stylesheet" href="./src/styles/main.css">
+    <title>Yu-Gi-Oh Jo-ken-po Edition</title>
+</head>
+<body>
+    <header>
+        <h1>Yu-Gi-Oh Jo-ken-po Edition</h1>
+    </header>
+
+    <main class="container" role="main">
+        <audio id="bgm" loop aria-label="Música de fundo do jogo">
+            <source src="./src/assets/audios/egyptian_duel.mp3" type="audio/mp3"/>
+        </audio>
+        <div class="bg-video">
+            <video class="video" autoplay loop muted aria-hidden="true">
+                <source src="./src/assets/video/yugi.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <aside class="container__left framed-golden-2" aria-label="Placar e informações do jogador">
+            <section class="score_box frame" aria-labelledby="score-heading">
+                <h2 id="score-heading" class="visually-hidden">Placar</h2>
+                <p id="score_points">Vitórias: 0 | Derrotas: 0</p>
+            </section>
+            <section class="menu_avatar" aria-label="Avatar do jogador">
+                <img id="card-image" alt="Avatar da carta selecionada">
+            </section>
+            <section class="card_details frame" aria-labelledby="card-details-heading">
+                <h2 id="card-details-heading" class="visually-hidden">Detalhes da carta</h2>
+                <p id="card-name">Selecione</p>
+                <p id="card-type">uma carta</p>
+            </section>
+        </aside>
+
+        <section class="container__right" aria-label="Área de jogo">
+            <article class="card-box__container">
+                <section class="card-box framed" id="computer-cards" aria-label="Cartas do computador">
+                </section>
+                <section class="card-versus__container" aria-labelledby="versus-heading">
+                    <h2 id="versus-heading" class="visually-hidden">Confronto de cartas</h2>
+                    <div class="versus-top">
+                        <div class="card-infield" aria-label="Carta do jogador em campo">
+                            <img id="player-field-card" height="180" width="125" alt="Carta do jogador">
+                        </div>
+                        <img height="100" src="./src/assets/icons/millenium2.png" alt="Símbolo do confronto">
+                        <div class="card-infield" aria-label="Carta do computador em campo">
+                            <img id="computer-field-card" height="180" width="125" alt="Carta do computador">
+                        </div>
+                    </div>
+                    <div class="versus-bottom">
+                        <button id="next-duel" class="rpgui-button" onclick="resetDuel()" aria-label="Iniciar próximo duelo">GANHOU</button>
+                    </div>
+                </section>
+                <section class="card-box framed" id="player-cards" aria-label="Cartas do jogador">
+                </section>
+            </article>
+        </section>
+    </main>
+
+    <script src="./src/scripts/engine.js" defer></script>
+</body>
+</html>
