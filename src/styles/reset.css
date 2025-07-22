@@ -1,8 +1,49 @@
+/* Variáveis CSS para consistência e manutenção */
+:root {
+    --font-primary: 'Press Start 2P', system-ui, sans-serif;
+    --font-size-base: clamp(0.8rem, 2vw, 0.9rem);
+}
+
+/* Reset global para consistência */
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-family: "Press Start 2P", cursive;
-  user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tipografia base */
+html {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: 1.5;
+}
+
+/* Elementos interativos com seleção desativada (apenas onde necessário) */
+button,
+img.card,
+img.card-infield {
+    user-select: none;
+}
+
+/* Media Queries para Responsividade */
+
+/* Mobile (≤600px) */
+@media screen and (max-width: 600px) {
+    :root {
+        --font-size-base: clamp(0.7rem, 1.8vw, 0.8rem);
+    }
+}
+
+/* Tablet (601px–1024px) */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    :root {
+        --font-size-base: clamp(0.8rem, 2vw, 0.9rem);
+    }
+}
+
+/* Desktop e TVs (>1024px) */
+@media screen and (min-width: 1025px) {
+    :root {
+        --font-size-base: clamp(0.9rem, 2.2vw, 1rem);
+    }
 }
