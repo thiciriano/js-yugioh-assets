@@ -1,106 +1,104 @@
-/**
-* customized divs (containers) and framed objects (background and frame image).
-*/
+/* Variáveis CSS para consistência e manutenção */
+:root {
+    --border-width: 0.8rem;
+    --border-image-width: 1.2rem;
+    --padding-unit: 0.75rem;
+    --container-z-index: 10;
+    --background-size: contain;
+}
 
-/* game div without background image*/
+/* Estilo base para contêineres RPG */
 .rpgui-container {
-  /* position style and default z */
-  position: fixed;
-  z-index: 10;
-
-  overflow: show;
+    position: relative;
+    z-index: var(--container-z-index);
+    box-sizing: border-box;
 }
 
-/* game div with background image*/
+/* Estilo base para molduras */
 .framed {
-  /* border */
-  border-style: solid;
-  border-image-source: url("../assets/rpg/border-image.png");
-  border-image-repeat: repeat;
-  border-image-slice: 6 6 6 6;
-  border-image-width: 18px;
-  border-width: 15px;
-  padding: 12px;
+    /* Bordas com imagem */
+    border-style: solid;
+    border-image-source: url("../assets/rpg/border-image.png");
+    border-image-slice: 6;
+    border-image-width: var(--border-image-width);
+    border-image-repeat: repeat;
+    border-width: var(--border-width);
+    padding: var(--padding-unit);
 
-  /* internal border */
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+    /* Fundo */
+    background: url("../assets/rpg/background-image.png") repeat center;
+    background-size: var(--background-size);
+    background-clip: padding-box;
+    background-origin: padding-box;
 
-  /* background */
-  background: url("../assets/rpg/background-image.png") repeat repeat;
-  background-clip: padding-box;
-  background-origin: padding-box;
-  background-position: center;
+    /* Consistência de dimensionamento */
+    box-sizing: border-box;
 }
 
-/* game div with golden background image*/
+/* Moldura dourada */
 .framed-golden {
-  /* border */
-  border-style: solid;
-  border-image-source: url("../assets/rpg/border-image-golden.png");
-  border-image-repeat: repeat;
-  border-image-slice: 4 4 4 4;
-  border-image-width: 18px;
-  border-width: 15px;
-  padding: 12px;
-
-  /* internal border */
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-
-  /* background */
-  background: url("../assets/rpg/background-image-golden.png") repeat repeat;
-  background-clip: padding-box;
-  background-origin: padding-box;
-  background-position: center;
+    border-image-source: url("../assets/rpg/border-image-golden.png");
+    border-image-slice: 4;
+    background: url("../assets/rpg/background-image-golden.png") repeat center;
+    background-size: var(--background-size);
 }
 
-/* game div with golden2 background image*/
+/* Moldura dourada alternativa */
 .framed-golden-2 {
-  /* border */
-  border-style: solid;
-  border-image-source: url("../assets/rpg/border-image-golden2.png");
-  border-image-repeat: repeat;
-  border-image-slice: 8 8 8 8;
-  border-image-width: 18px;
-  border-width: 15px;
-  padding: 12px;
-
-  /* internal border */
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-
-  /* background */
-  background: url("../assets/rpg/background-image-golden2.png") repeat repeat;
-  background-clip: padding-box;
-  background-origin: padding-box;
-  background-position: center;
+    border-image-source: url("../assets/rpg/border-image-golden2.png");
+    border-image-slice: 8;
+    background: url("../assets/rpg/background-image-golden2.png") repeat center;
+    background-size: var(--background-size);
 }
 
-/* game div with soft grey background image*/
+/* Moldura cinza */
 .framed-grey {
-  position: relative;
+    border-image-source: url("../assets/rpg/border-image-grey.png");
+    border-image-slice: 3;
+    border-image-width: 0.5rem;
+    border-width: 0.5rem;
+    background: url("../assets/rpg/background-image-grey.png") repeat center;
+    background-size: var(--background-size);
+}
 
-  /* border */
-  border-style: solid;
-  border-image-source: url("../assets/rpg/border-image-grey.png");
-  border-image-repeat: repeat;
-  border-image-slice: 3 3 3 3;
-  border-image-width: 7px;
-  border-width: 7px;
-  padding: 12px;
+/* Media Queries para Responsividade */
 
-  /* internal border */
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+/* Mobile (≤600px) */
+@media screen and (max-width: 600px) {
+    :root {
+        --border-width: 0.5rem;
+        --border-image-width: 0.8rem;
+        --padding-unit: 0.5rem;
+        --background-size: auto;
+    }
 
-  /* background */
-  background: url("../assets/rpg/background-image-grey.png") repeat repeat;
-  background-clip: padding-box;
-  background-origin: padding-box;
-  background-position: center;
+    .rpgui-container {
+        min-width: 100%;
+        min-height: auto;
+    }
+
+    .framed,
+    .framed-golden,
+    .framed-golden-2,
+    .framed-grey {
+        padding: calc(var(--padding-unit) / 1.5);
+    }
+}
+
+/* Tablet (601px–1024px) */
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+    :root {
+        --border-width: 0.6rem;
+        --border-image-width: 1rem;
+        --padding-unit: 0.6rem;
+    }
+}
+
+/* Desktop e TVs (>1024px) */
+@media screen and (min-width: 1025px) {
+    :root {
+        --border-width: 0.8rem;
+        --border-image-width: 1.2rem;
+        --padding-unit: 0.75rem;
+    }
 }
