@@ -45,38 +45,30 @@ const state = {
 };
 
 const cardData = [
-    {
-        id: 0,
-        name: "Blue-Eyes White Dragon",
-        type: "Paper",
-        img: `${ASSET_PATHS.images}dragon.png`,
-        winOf: [],
-        loseOf: [2, 3]
-    },
-    {
-        id: 1,
-        name: "Palladium Oracle Mahad",
-        type: "Rock",
-        img: `${ASSET_PATHS.images}paladdium.png`,
-        winOf: [2, 3],
-        loseOf: [0]
-    },
-    {
-        id: 2,
-        name: "Slifer the Sky Dragon",
-        type: "Scissors",
-        img: `${ASSET_PATHS.images}slifer.jpeg`,
-        winOf: [0],
-        loseOf: [1, 3]
-    },
-    {
-        id: 3,
-        name: "Magician of Black Chaos",
-        type: "Water",
-        img: `${ASSET_PATHS.images}magician.png`,
-        winOf: [0, 2],
-        loseOf: [1]
-    }
+  {
+    id: 0,
+    name: "Blue Eyes White Dragon",
+    type: "Paper",
+    img: `${pathImages}dragon.png`,
+    winOf: [1],
+    loseOf: [2],
+  },
+  {
+    id: 1,
+    name: "Dark Magician",
+    type: "Rock",
+    img: `${pathImages}magician.png`,
+    winOf: [2],
+    loseOf: [0],
+  },
+  {
+    id: 2,
+    name: "Exodia",
+    type: "Scissors",
+    img: `${pathImages}exodia.png`,
+    winOf: [0],
+    loseOf: [1],
+  },
 ];
 
 const audioCache = {
